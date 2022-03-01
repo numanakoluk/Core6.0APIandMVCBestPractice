@@ -9,6 +9,11 @@ namespace Core
     public class Product:BaseEntity
     {
         public string Name { get; set; }
+
+        public Product(string name)
+        {
+            Name= name ?? throw new ArgumentNullException(nameof(Name));
+        }
         public int Stock { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
