@@ -5,13 +5,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Services
 {
     public interface IService<T> where T : class
     {
         Task<T> GetByIdAsyn(int id);
        
-        Task<IEnumerable<T>> GetAllAsyn();
+        Task<IEnumerable<T>> GetAllAsync();
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
 
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
@@ -19,6 +19,7 @@ namespace Core
 
         Task<T> AddRangeAsyn(IEnumerable<T> entities);
 
+        //Asenkron olacak.
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
 
