@@ -16,7 +16,10 @@ namespace Repository.Seeds
         {
             //C #10 Feature
             //Category c = new()
-            builder.HasData(new Category { Id = 1, Name = "Pens" }, new Category { Id = 2, Name = "Books" }, new Category { Id = 3, Name = "Notebooks" });
+            builder.HasData(
+                new Category { Id = 1, Name = "Pens" },
+                new Category { Id = 2, Name = "Books" },
+                new Category { Id = 3, Name = "Notebooks" });
         }
     }
 }
