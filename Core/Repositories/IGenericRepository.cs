@@ -19,15 +19,15 @@ namespace Core.Repositories
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression); 
 
 
-        Task<T> AddAsync(T entity);
+        Task AddAsync(T entity);
 
         //Birden fazla ekleme için.
-         Task<T> AddRangeAsyn(IEnumerable<T> entities);
+         Task AddRangeAsync(IEnumerable<T> entities);
 
         void Remove(T entity);
 
         //Birden fazla data silmek için.
-        Task<T> RemoveRangeAsyn(IEnumerable<T> entities); 
+        void RemoveRange(IEnumerable<T> entities); 
         void Update(T entity);
 
         
