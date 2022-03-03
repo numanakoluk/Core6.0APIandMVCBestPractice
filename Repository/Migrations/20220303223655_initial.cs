@@ -17,7 +17,7 @@ namespace Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -35,7 +35,7 @@ namespace Repository.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,28 +73,28 @@ namespace Repository.Migrations
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdateDate" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pens", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pens", null });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdateDate" },
-                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Books", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Books", null });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "CreatedDate", "Name", "UpdateDate" },
-                values: new object[] { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Notebooks", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Notebooks", null });
 
             migrationBuilder.InsertData(
                 table: "Products",
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Name", "Price", "Stock", "UpdateDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8529), "Pen 1", 100m, 20, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 1, new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8536), "Pen 2", 200m, 30, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 1, new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8537), "Pen 3", 600m, 60, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 2, new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8538), "Book 1", 600m, 60, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 2, new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8539), "Book 2", 700m, 320, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
+                    { 1, 1, new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1907), "Pen 1", 100m, 20, null },
+                    { 2, 1, new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1919), "Pen 2", 200m, 30, null },
+                    { 3, 1, new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1920), "Pen 3", 600m, 60, null },
+                    { 4, 2, new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1921), "Book 1", 600m, 60, null },
+                    { 5, 2, new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1921), "Book 2", 700m, 320, null }
                 });
 
             migrationBuilder.InsertData(

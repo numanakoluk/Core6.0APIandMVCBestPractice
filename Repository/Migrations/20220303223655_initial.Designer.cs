@@ -12,7 +12,7 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220303221626_initial")]
+    [Migration("20220303223655_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,7 +40,7 @@ namespace Repository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -52,22 +52,19 @@ namespace Repository.Migrations
                         {
                             Id = 1,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Pens",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Name = "Pens"
                         },
                         new
                         {
                             Id = 2,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Books",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Name = "Books"
                         },
                         new
                         {
                             Id = 3,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Notebooks",
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Name = "Notebooks"
                         });
                 });
 
@@ -96,7 +93,7 @@ namespace Repository.Migrations
                     b.Property<int>("Stock")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("UpdateDate")
+                    b.Property<DateTime?>("UpdateDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -110,51 +107,46 @@ namespace Repository.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8529),
+                            CreatedDate = new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1907),
                             Name = "Pen 1",
                             Price = 100m,
-                            Stock = 20,
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Stock = 20
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8536),
+                            CreatedDate = new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1919),
                             Name = "Pen 2",
                             Price = 200m,
-                            Stock = 30,
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Stock = 30
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8537),
+                            CreatedDate = new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1920),
                             Name = "Pen 3",
                             Price = 600m,
-                            Stock = 60,
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Stock = 60
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8538),
+                            CreatedDate = new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1921),
                             Name = "Book 1",
                             Price = 600m,
-                            Stock = 60,
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Stock = 60
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 2,
-                            CreatedDate = new DateTime(2022, 3, 4, 1, 16, 26, 376, DateTimeKind.Local).AddTicks(8539),
+                            CreatedDate = new DateTime(2022, 3, 4, 1, 36, 55, 739, DateTimeKind.Local).AddTicks(1921),
                             Name = "Book 2",
                             Price = 700m,
-                            Stock = 320,
-                            UpdateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            Stock = 320
                         });
                 });
 
