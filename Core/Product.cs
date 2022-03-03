@@ -20,7 +20,8 @@ namespace Core
 
         public Category Category { get; set; }
 
-        public ProductFeature ProductFeature { get; set; }
+        //First Value dont be appointed.Because Nullable ProductFeature
+        public ProductFeature? ProductFeature { get; set; }
 
     }
 }
