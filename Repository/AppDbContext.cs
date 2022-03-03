@@ -1,8 +1,10 @@
 ﻿using Core;
 using Microsoft.EntityFrameworkCore;
+using Repository.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,6 +27,12 @@ namespace Repository
         {
             //FluentApi
             //modelBuilder.Entity<Category>().HasKey(x=>x.Id)
+
+            //All
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            //One class
+            //modelBuilder.ApplyConfiguration(new ProductConfiguration());
         }
     }
 }
