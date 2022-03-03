@@ -20,5 +20,11 @@ namespace Repository
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductFeature> ProductFeatures { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //FluentApi
+            //modelBuilder.Entity<Category>().HasKey(x=>x.Id)
+        }
     }
 }
