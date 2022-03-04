@@ -19,7 +19,7 @@ namespace Core.Services
 
         Task<T> AddRangeAsyn(IEnumerable<T> entities);
 
-        //Asenkron olacak.
+        //Asenkron with .
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
 

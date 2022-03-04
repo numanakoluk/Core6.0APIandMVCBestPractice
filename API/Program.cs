@@ -17,7 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Scoped
+//Scoped For Depend. Injection
 builder.Services.AddScoped<IUnitOFWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 //builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
@@ -29,6 +29,7 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 {
     x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
     {
+        //Not Type Safe
         //option.MigrationsAssembly("Repository") 
         //Type Scrript Dynamic
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
