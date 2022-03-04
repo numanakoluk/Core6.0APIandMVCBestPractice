@@ -1,6 +1,7 @@
 ﻿using Core.Repositories;
 using Core.Services;
 using Core.UnitOfWorks;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,49 +24,62 @@ namespace Service.Services
             _unitOfWork = unitOfWork;
         }
 
-        public Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            
+              await _repository.AddAsync(entity);
+              await _unitOfWork.CommitAsync();
+              return entity;
+            
         }
 
-        public Task<T> AddRangeAsyn(IEnumerable<T> entities)
+        public async Task<IEnumerable<T>> AddRangeAsyn(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            await _repository.AddRangeAsync(entities);
+            await _unitOfWork.CommitAsync();
+            return entities;
         }
 
-        public Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
+        //For Extra Custom 
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+           return await _repository.AnyAsync(expression);
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _repository.GetAll().ToListAsync();
         }
 
-        public Task<T> GetByIdAsyn(int id)
+        public async Task<T> GetByIdAsyn(int id)
         {
-            throw new NotImplementedException();
+            return await _repository.GetByIdAsyn(id);
         }
 
-        public Task RemoveAsync(T entity)
+        public async Task RemoveAsync(T entity)
         {
-            throw new NotImplementedException();
+            _repository.Remove(entity);
+            await _unitOfWork.CommitAsync();   
         }
 
-        public Task<T> RemoveRangeAsyn(IEnumerable<T> entities)
+        public async Task RemoveRangeAsyn(IEnumerable<T> entities)
         {
-            throw new NotImplementedException();
+            _repository.RemoveRange(entities);
+            await _unitOfWork.CommitAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _repository.Update(entity);
+            await _unitOfWork.CommitAsync();
         }
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            
+            return _repository.Where(expression);
         }
+
+        
     }
 }

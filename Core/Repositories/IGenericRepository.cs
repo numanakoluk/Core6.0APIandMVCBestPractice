@@ -8,7 +8,7 @@ namespace Core.Repositories
         Task<T> GetByIdAsyn(int id);
 
         //Direk toList diyebilirim.
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
+        IQueryable<T> GetAll();
 
 
 

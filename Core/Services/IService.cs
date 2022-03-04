@@ -15,15 +15,17 @@ namespace Core.Services
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
 
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
+
+        //Tense There's a id because entity return 
         Task<T> AddAsync(T entity);
 
-        Task<T> AddRangeAsyn(IEnumerable<T> entities);
+        Task<IEnumerable<T>> AddRangeAsyn(IEnumerable<T> entities);
 
         //Asenkron with .
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
 
-        Task<T> RemoveRangeAsyn(IEnumerable<T> entities);
+        Task RemoveRangeAsyn(IEnumerable<T> entities);
         
 
     }
