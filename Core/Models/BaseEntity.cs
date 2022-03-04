@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace Core.Model
 {
     //Abstract yapma sebebim instance alınmasın newlenemesin.   
     public abstract class BaseEntity
