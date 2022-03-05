@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ProductsController : ControllerBase
+    
+    public class ProductsController : CustomBaseController
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
@@ -19,12 +18,14 @@ namespace API.Controllers
             _service = service;
             _mapper = mapper;
         }
+        [HttpGet]
         public async Task<IActionResult> All()
         {
             var products = await _service.GetAllAsync();
 
             var productsDto = _mapper.Map<List<ProductDto>>(products.ToList());
-            return CustomResponseDto<List<ProductDto>>.Success(200, productsDto);
+            //return CustomResponseDto<List<ProductDto>>.Success(200, productsDto); Not Clean
+            return CreateActionResult<List<ProductDto>>(CustomResponseDto<List<ProductDto>>.Success(200, productsDto));
         }
 
     }
