@@ -20,6 +20,17 @@ namespace API.Controllers
             _service = service;
             _mapper = mapper;
         }
+
+        //Get api/products/GetProductsWithCategory
+        [HttpGet("GetProductsWithCategory")]
+        public Task<IActionResult> GetProductsWithCategory()
+        {
+
+
+        }
+
+
+        //Get Api/products
         [HttpGet]
         public async Task<IActionResult> All()
         {
