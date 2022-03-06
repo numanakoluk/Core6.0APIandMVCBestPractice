@@ -14,18 +14,21 @@ namespace API.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
+        private readonly IProductService productService;
 
-        public ProductsController(IService<Product> service, IMapper mapper)
+        public ProductsController(IService<Product> service, IMapper mapper, IProductService productService)
         {
             _service = service;
             _mapper = mapper;
+            this.productService = productService;
         }
 
         //Get api/products/GetProductsWithCategory
-        [HttpGet("GetProductsWithCategory")]
-        public Task<IActionResult> GetProductsWithCategory()
+        [HttpGet("GetProductsWithCategory")] //[HttpGet"[action]"]: simple
+        public async Task<IActionResult> GetProductsWithCategory()
         {
-
+            //One Code Clean
+            return CreateActionResult(await productService.GetProductsWithCategory());
 
         }
 

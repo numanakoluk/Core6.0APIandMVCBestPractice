@@ -19,6 +19,9 @@ namespace Service.Mapping
             CreateMap<ProductFeature, ProductFeatureDto>().ReverseMap();
             CreateMap<ProductUpdateDto, Product>(); //Update Entity
 
+            //Mapping for category
+            CreateMap<Product, ProductWithCategoryDto > ().ReverseMap();
+
         }
     }
 }
