@@ -54,5 +54,16 @@ namespace API.Controllers
             await _service.UpdateAsync(_mapper.Map<Product>(productDto));
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204)); //201 Create
         }
+
+        // api/products/1
+        [HttpDelete("(id)")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            var product = await _service.GetByIdAsyn(id);
+
+            await _service.RemoveAsync(product);
+
+            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        }
     }
 }
