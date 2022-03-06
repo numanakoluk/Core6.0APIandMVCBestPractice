@@ -19,11 +19,12 @@ namespace Repository.Repositories
 
 
         //Ctor
-        public GenericRepository(AppDbContext context, DbSet<T> dbSet)
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
-            _dbSet = dbSet;
+            _dbSet = _context.Set<T>();
         }
+
 
         public async Task AddAsync(T entity)
         {

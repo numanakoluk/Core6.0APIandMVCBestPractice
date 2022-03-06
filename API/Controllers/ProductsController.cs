@@ -30,7 +30,7 @@ namespace API.Controllers
             return CreateActionResult<List<ProductDto>>(CustomResponseDto<List<ProductDto>>.Success(200, productsDto));
         }
         //Get /Api/product/1
-        [HttpGet("(id)")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var product = await _service.GetByIdAsyn(id);
@@ -52,14 +52,21 @@ namespace API.Controllers
         public async Task<IActionResult> Update(ProductUpdateDto productDto)
         {
             await _service.UpdateAsync(_mapper.Map<Product>(productDto));
-            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204)); //201 Create
+
+            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
         // api/products/1
-        [HttpDelete("(id)")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
         {
             var product = await _service.GetByIdAsyn(id);
+
+            //Not Best PRACTİCE
+            //if (product==null)
+            //{
+            //    return CreateActionResult(CustomResponseDto<NoContentDto>.Fail(404, "This id Product Not Found"));
+            //}
 
             await _service.RemoveAsync(product);
 

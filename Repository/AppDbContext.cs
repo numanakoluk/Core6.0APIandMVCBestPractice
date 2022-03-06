@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configuration;
 using System;
