@@ -39,5 +39,14 @@ namespace API.Controllers
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productsDto));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Save(ProductDto productDto)
+        {
+            var product = await _service.AddAsync(_mapper.Map<Product>(productDto));
+
+            var productsDto = _mapper.Map<ProductDto>(product);
+            return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, productsDto)); //201 Create
+        }
+
     }
 }
