@@ -1,13 +1,14 @@
-﻿using AutoMapper;
+﻿using API.Filters;
+using AutoMapper;
 using Core.DTOs;
 using Core.Models;
 using Core.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-   
+
+    [ValidateFilterAttribute] //This proccess not best pratice.This's must be global(Program.cs)
 
     public class ProductsController : CustomBaseController
     {

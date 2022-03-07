@@ -1,3 +1,4 @@
+using API.Filters;
 using Core.Repositories;
 using Core.Services;
 using Core.UnitOfWorks;
@@ -15,8 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 //Configuration
-  
-builder.Services.AddControllers().AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>()); //Add FluentValidation
+ 
+//Add ValidateFilterAttribute 
+builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x=>x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>()); //Add FluentValidation
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
