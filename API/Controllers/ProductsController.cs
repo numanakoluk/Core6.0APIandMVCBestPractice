@@ -47,6 +47,14 @@ namespace API.Controllers
         {
             var product = await _service.GetByIdAsyn(id);
 
+
+            //Bad Process
+            //if (product==null)
+            //{
+            //    return CreateActionResult(CustomResponseDto<ProductDto>.Fail(400, "This Id Owner Product Not Found"));
+
+            //}
+
             var productsDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productsDto));
         }
