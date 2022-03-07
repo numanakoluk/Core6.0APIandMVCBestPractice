@@ -3,17 +3,11 @@ using API.Middlewares;
 using API.Modules;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Core.Repositories;
-using Core.Services;
-using Core.UnitOfWorks;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Repository;
-using Repository.Repositories;
-using Repository.UnitOfWorks;
 using Service.Mapping;
-using Service.Services;
 using Service.Validations;
 using System.Reflection;
 

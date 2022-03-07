@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Caching;
 using Core.Repositories;
 using Core.Services;
 using Core.UnitOfWorks;
@@ -46,6 +47,9 @@ namespace API.Modules
             //Service take
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
+
+            //Caching Product
+            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
 
 
         }
