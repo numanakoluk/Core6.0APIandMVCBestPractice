@@ -38,6 +38,9 @@ builder.Services.AddSwaggerGen();
 //FilterService
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
+//AddCaching
+builder.Services.AddMemoryCache();
+
 //Scoped For Depend. Injection //RepoService Module
 //builder.Services.AddScoped<IUnitOFWork, UnitOfWork>();
 //builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
