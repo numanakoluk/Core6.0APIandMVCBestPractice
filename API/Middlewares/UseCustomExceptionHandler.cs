@@ -22,7 +22,9 @@ namespace API.Middlewares
                     var statusCode = exceptionFeature.Error switch
                     {
                         //default "_"
-                        ClientSideException => 400, _=> 500
+                        ClientSideException => 400,
+                        NotFoundException =>404,
+                        _=> 500
 
                     };
                     context.Response.StatusCode = statusCode;
