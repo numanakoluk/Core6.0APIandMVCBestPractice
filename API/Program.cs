@@ -32,6 +32,9 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//FilterService
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
+
 //Scoped For Depend. Injection
 builder.Services.AddScoped<IUnitOFWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

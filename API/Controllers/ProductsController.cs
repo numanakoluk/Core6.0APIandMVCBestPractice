@@ -41,6 +41,9 @@ namespace API.Controllers
             //return CustomResponseDto<List<ProductDto>>.Success(200, productsDto); Not Clean
             return CreateActionResult<List<ProductDto>>(CustomResponseDto<List<ProductDto>>.Success(200, productsDto));
         }
+
+
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         //Get /Api/product/1
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
