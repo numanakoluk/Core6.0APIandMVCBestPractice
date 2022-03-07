@@ -58,7 +58,7 @@ namespace Service.Services
             var hasProduct= await _repository.GetByIdAsyn(id);
             if (hasProduct==null)
             {
-                throw new ClientSideException($"{typeof(T).Name} Not Found");
+                throw new NotFoundException($"{typeof(T).Name}({id}) Not Found"); //dynamic code.
 
             }
             return hasProduct;
