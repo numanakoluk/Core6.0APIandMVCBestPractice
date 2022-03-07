@@ -1,10 +1,11 @@
-﻿using Core.Services;
+﻿using API.Filters;
+using Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    
+    [ValidateFilterAttribute]
     public class CategoriesController : CustomBaseController
     {
         private readonly ICategoryService _categoryService;
