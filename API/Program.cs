@@ -1,5 +1,6 @@
 using API.Filters;
 using API.Middlewares;
+using Autofac.Extensions.DependencyInjection;
 using Core.Repositories;
 using Core.Services;
 using Core.UnitOfWorks;
@@ -63,6 +64,13 @@ builder.Services.AddDbContext<AppDbContext>(x =>
         option.MigrationsAssembly(Assembly.GetAssembly(typeof(AppDbContext)).GetName().Name);
     });
 });
+
+
+//Autofac(DI)
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+
+
 
 var app = builder.Build();
 

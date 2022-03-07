@@ -79,6 +79,8 @@ namespace API.Controllers
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
+
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         // api/products/1
         [HttpDelete("{id}")]
         public async Task<IActionResult> Remove(int id)
