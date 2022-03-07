@@ -1,5 +1,7 @@
 using API.Filters;
 using API.Middlewares;
+using API.Modules;
+using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Core.Repositories;
 using Core.Services;
@@ -36,17 +38,19 @@ builder.Services.AddSwaggerGen();
 //FilterService
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
 
-//Scoped For Depend. Injection
-builder.Services.AddScoped<IUnitOFWork, UnitOfWork>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+//Scoped For Depend. Injection //RepoService Module
+//builder.Services.AddScoped<IUnitOFWork, UnitOfWork>();
+//builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+//builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
+//RepoServiceModule
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<IProductService, ProductService>();
 
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+//RepoService Module 
+//builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+//builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 
 //AutoMapp
@@ -68,7 +72,8 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 
 //Autofac(DI)
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-
+//Modul Activate
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModul()));
 
 
 
