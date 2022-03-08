@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Model;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configuration;
@@ -23,6 +24,71 @@ namespace Repository
         public DbSet<Product> Products { get; set; }
 
         public DbSet<ProductFeature> ProductFeatures { get; set; }
+
+        //CreatedData UpdateDate normal
+
+        public override int SaveChanges()
+        {
+            foreach (var item in ChangeTracker.Entries())
+            {
+                if (item.Entity is BaseEntity entityRefarence) //Referance type's meaning
+                {
+                    switch (item.State)
+                    {
+                        case EntityState.Added:
+                            {
+                                entityRefarence.CreatedDate = DateTime.Now;
+                                break;
+                            }
+                        case EntityState.Modified:
+                            {
+                                
+
+                                entityRefarence.UpdateDate = DateTime.Now;
+                                break;
+                            }
+                    }
+                }
+            }
+
+
+            return base.SaveChanges();
+        }
+
+
+
+        //CreatedData UpdatedDate async
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+
+            //Take Entries with ChangeTracker
+            foreach (var item in ChangeTracker.Entries())
+            {
+                if (item.Entity is BaseEntity entityRefarence) //Referance type's meaning
+                {
+                    switch (item.State)
+                    {
+                        case EntityState.Added:
+                        {
+                            entityRefarence.CreatedDate=DateTime.Now;
+                                break;
+                        }
+                        case EntityState.Modified:
+                            {
+                                //Dont Change Created Date
+                                Entry(entityRefarence).Property(x => x.CreatedDate).IsModified = false;
+
+
+                                entityRefarence.UpdateDate=DateTime.Now;
+                                break;
+                            }
+                    }
+                }
+            }
+
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
