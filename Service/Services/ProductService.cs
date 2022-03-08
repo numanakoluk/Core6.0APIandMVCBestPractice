@@ -4,11 +4,6 @@ using Core.Models;
 using Core.Repositories;
 using Core.Services;
 using Core.UnitOfWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services
 {
@@ -22,13 +17,13 @@ namespace Service.Services
             _mapper = mapper;
         }
 
-        public async Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
+        public async Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
         {
             var products = await _productRepository.GetProductsWithCategory();
 
             //Businness Code
             var productsDto = _mapper.Map<List<ProductWithCategoryDto>>(products);
-            return CustomResponseDto<List<ProductWithCategoryDto>>.Success(200, productsDto);
+            return productsDto;
         }
     }
 }

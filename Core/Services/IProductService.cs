@@ -10,7 +10,7 @@ namespace Core.Services
 {
     public interface IProductService: IService<Product>
     {
-        //Api Request Data: CustomResponseDto
-        Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory();
+        //MVC Data
+        Task<List<ProductWithCategoryDto>> GetProductsWithCategory();
     }
 }
