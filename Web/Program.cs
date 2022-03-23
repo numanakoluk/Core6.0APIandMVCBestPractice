@@ -8,6 +8,7 @@ using Service.Validations;
 using System.Reflection;
 using Web;
 using Web.Modules;
+using Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,19 @@ builder.Services.AddDbContext<AppDbContext>(x =>
     });
 });
 
+
+//AddHttpClient
+builder.Services.AddHttpClient<ProductApiService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+
+});
+
+builder.Services.AddHttpClient<CategoryApiService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["BaseUrl"]);
+
+});
 
 //Filter
 builder.Services.AddScoped(typeof(NotFoundFilter<>));
