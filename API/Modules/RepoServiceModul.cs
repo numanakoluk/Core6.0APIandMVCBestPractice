@@ -48,8 +48,8 @@ namespace API.Modules
             builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Service")).AsImplementedInterfaces().InstancePerLifetimeScope();
 
 
-            //Caching Product
-            builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
+            //Caching Product No caching.
+           // builder.RegisterType<ProductServiceWithCaching>().As<IProductService>();
 
 
         }

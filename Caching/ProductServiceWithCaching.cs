@@ -76,13 +76,13 @@ namespace Caching
         }
 
         //Mvc Data
-        public  Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
+        public Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory()
         {
             var products = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey);
 
             var productsCategoryDto = _mapper.Map<List<ProductWithCategoryDto>>(products);
 
-            return Task.FromResult(productsCategoryDto);
+            return Task.FromResult(CustomResponseDto<List<ProductWithCategoryDto>>.Success(200,productsCategoryDto));
         }
 
         public async Task RemoveAsync(Product entity)

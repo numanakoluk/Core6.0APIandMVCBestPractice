@@ -11,6 +11,6 @@ namespace Core.Services
     public interface IProductService: IService<Product>
     {
         //MVC Data
-        Task<List<ProductWithCategoryDto>> GetProductsWithCategory();
+        Task<CustomResponseDto<List<ProductWithCategoryDto>>> GetProductsWithCategory();
     }
 }
