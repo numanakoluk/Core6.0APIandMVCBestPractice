@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.DTOs
+﻿namespace Core.DTOs
 {
     public class ErrorViewModel
     {
 
-        public List<string> Errors { get; set; }  = new List<string>(); //default List Do because its must not null.
+        public List<string> Errors { get; set; } = new List<string>(); //default List Do because its must not null.
     }
 }

@@ -1,16 +1,11 @@
 ﻿using AutoMapper;
 using Core.DTOs;
 using Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Mapping
 {
     //Add MVC And API just Project Public
-    public class MapProfile:Profile
+    public class MapProfile : Profile
     {
         public MapProfile()
         {
@@ -20,7 +15,7 @@ namespace Service.Mapping
             CreateMap<ProductUpdateDto, Product>(); //Update Entity
 
             //Mapping for category
-            CreateMap<Product, ProductWithCategoryDto > ().ReverseMap();
+            CreateMap<Product, ProductWithCategoryDto>().ReverseMap();
 
             //CategoryByIdProduct
             CreateMap<Category, CategoryWithProductsDto>();

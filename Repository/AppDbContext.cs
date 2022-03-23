@@ -1,21 +1,14 @@
-﻿using Core;
-using Core.Model;
+﻿using Core.Model;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
-using Repository.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class AppDbContext:DbContext
+    public class AppDbContext : DbContext
     {
 
-        public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
@@ -42,7 +35,7 @@ namespace Repository
                             }
                         case EntityState.Modified:
                             {
-                                
+
 
                                 entityRefarence.UpdateDate = DateTime.Now;
                                 break;
@@ -69,17 +62,17 @@ namespace Repository
                     switch (item.State)
                     {
                         case EntityState.Added:
-                        {
-                            entityRefarence.CreatedDate=DateTime.Now;
+                            {
+                                entityRefarence.CreatedDate = DateTime.Now;
                                 break;
-                        }
+                            }
                         case EntityState.Modified:
                             {
                                 //Dont Change Created Date
                                 Entry(entityRefarence).Property(x => x.CreatedDate).IsModified = false;
 
 
-                                entityRefarence.UpdateDate=DateTime.Now;
+                                entityRefarence.UpdateDate = DateTime.Now;
                                 break;
                             }
                     }

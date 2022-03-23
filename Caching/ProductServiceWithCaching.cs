@@ -76,7 +76,7 @@ namespace Caching
         }
 
         //Mvc Data
-        public  Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
+        public Task<List<ProductWithCategoryDto>> GetProductsWithCategory()
         {
             var products = _memoryCache.Get<IEnumerable<Product>>(CacheProductKey);
 

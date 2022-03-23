@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Web
 {
-    public class NotFoundFilter<T> : IAsyncActionFilter where T :  BaseEntity
+    public class NotFoundFilter<T> : IAsyncActionFilter where T : BaseEntity
     {
         private readonly IService<T> _service;
 
@@ -40,6 +40,6 @@ namespace Web
             context.Result = new RedirectToActionResult("Error", "Home", errorViewModel);
         }
     }
-    
-    
+
+
 }

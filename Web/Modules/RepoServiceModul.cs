@@ -12,7 +12,7 @@ using Module = Autofac.Module;
 
 namespace Web.Modules
 {
-    public class RepoServiceModul:Module
+    public class RepoServiceModul : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
@@ -34,12 +34,12 @@ namespace Web.Modules
             var repoAssembly = Assembly.GetAssembly(typeof(AppDbContext));
 
             //Service 
-            var serviceAssembly =Assembly.GetAssembly(typeof(MapProfile));
+            var serviceAssembly = Assembly.GetAssembly(typeof(MapProfile));
 
 
             //Repo Take
 
-            builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x=>x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterAssemblyTypes(apiAssembly, repoAssembly, serviceAssembly).Where(x => x.Name.EndsWith("Repository")).AsImplementedInterfaces().InstancePerLifetimeScope();
             //InstancePerLifetimeScope => Scope(AspNetCore)
             //InstancePerDependency => Transient
 

@@ -3,12 +3,7 @@ using Core.Services;
 using Core.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Service.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Service.Services
 {
@@ -27,11 +22,11 @@ namespace Service.Services
 
         public async Task<T> AddAsync(T entity)
         {
-            
-              await _repository.AddAsync(entity);
-              await _unitOfWork.CommitAsync();
-              return entity;
-            
+
+            await _repository.AddAsync(entity);
+            await _unitOfWork.CommitAsync();
+            return entity;
+
         }
 
         public async Task<IEnumerable<T>> AddRangeAsyn(IEnumerable<T> entities)
@@ -44,7 +39,7 @@ namespace Service.Services
         //For Extra Custom 
         public async Task<bool> AnyAsync(Expression<Func<T, bool>> expression)
         {
-           return await _repository.AnyAsync(expression);
+            return await _repository.AnyAsync(expression);
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -55,8 +50,8 @@ namespace Service.Services
         //Try Catch Control Generic.
         public async Task<T> GetByIdAsyn(int id)
         {
-            var hasProduct= await _repository.GetByIdAsyn(id);
-            if (hasProduct==null)
+            var hasProduct = await _repository.GetByIdAsyn(id);
+            if (hasProduct == null)
             {
                 throw new NotFoundException($"{typeof(T).Name}({id}) Not Found"); //dynamic code.
 
@@ -67,7 +62,7 @@ namespace Service.Services
         public async Task RemoveAsync(T entity)
         {
             _repository.Remove(entity);
-            await _unitOfWork.CommitAsync();   
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task RemoveRangeAsyn(IEnumerable<T> entities)
@@ -84,10 +79,10 @@ namespace Service.Services
 
         public IQueryable<T> Where(Expression<Func<T, bool>> expression)
         {
-            
+
             return _repository.Where(expression);
         }
 
-        
+
     }
 }

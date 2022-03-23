@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
 namespace Core.Services
 {
     public interface IService<T> where T : class
     {
         Task<T> GetByIdAsyn(int id);
-       
+
         Task<IEnumerable<T>> GetAllAsync();
         IQueryable<T> Where(Expression<Func<T, bool>> expression);
 
@@ -26,7 +21,7 @@ namespace Core.Services
         Task RemoveAsync(T entity);
 
         Task RemoveRangeAsyn(IEnumerable<T> entities);
-        
+
 
     }
 }
